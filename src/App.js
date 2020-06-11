@@ -6,7 +6,7 @@ import logo from "./logo.svg";
 
 class App extends Component {
   componentDidMount() {
-    console.log('哈哈哈~ 服务器渲染成功了！');
+    console.log("哈哈哈~ 服务器渲染成功了！");
   }
 
   render() {
