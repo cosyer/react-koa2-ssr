@@ -6,6 +6,8 @@ import fs from "fs";
 import koaStatic from "koa-static";
 import path from "path";
 import { renderToString } from "react-dom/server";
+import { StaticRouter } from "react-router-dom";
+import routes from "../src/routes";
 
 // 配置文件
 const config = {
@@ -28,6 +30,7 @@ app.use(
 app.use(
   new Router()
     .get("*", async (ctx, next) => {
+      let context = {};
       ctx.response.type = "html"; //指定content type
       let shtml = "";
       await new Promise((resolve, reject) => {
@@ -44,8 +47,17 @@ app.use(
           }
         );
       });
+      console.log(111, ctx.request.url);
       // 替换掉 {{root}} 为我们生成后的HTML
-      ctx.response.body = shtml.replace("{{root}}", renderToString(<App />));
+      // ctx.response.body = shtml.replace("{{root}}", renderToString(<App />));
+      ctx.response.body = shtml.replace(
+        "{{root}}",
+        renderToString(
+          <StaticRouter context={context} location={ctx.request.url}>
+            {routes}
+          </StaticRouter>
+        )
+      );
     })
     .routes()
 );
