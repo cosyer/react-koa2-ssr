@@ -16,6 +16,7 @@ export default [
     path: "/",
     component: App,
     exact: true,
+    loadData: App.loadData,
     key: "/",
   },
   {

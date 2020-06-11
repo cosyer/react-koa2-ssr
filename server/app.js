@@ -12,6 +12,8 @@ import routes from "../src/routes";
 import { Provider } from "react-redux";
 import { getServerStore } from "../src/store/index";
 
+const cors = require("koa-cors");
+
 // 配置文件
 const config = {
   port: 3030,
@@ -19,6 +21,9 @@ const config = {
 
 // 实例化 koa
 const app = new Koa();
+
+// 跨域
+app.use(cors());
 
 // 静态资源
 app.use(
@@ -52,18 +57,29 @@ app.use(
       });
       // 替换掉 {{root}} 为我们生成后的HTML
       // ctx.response.body = shtml.replace("{{root}}", renderToString(<App />));
-      ctx.response.body = shtml.replace(
-        "{{root}}",
-        renderToString(
-          <Provider store={getServerStore()}>
-            <StaticRouter context={context} location={ctx.request.url}>
-              {routes.map((route) => (
-                <Route {...route} />
-              ))}
-            </StaticRouter>
-          </Provider>
-        )
-      );
+
+      let promises = [];
+      let store = getServerStore();
+      routes.forEach((route) => {
+        if (route.loadData) {
+          promises.push(route.loadData(store));
+        }
+      });
+      Promise.all(promises).then(() => {
+        console.log(JSON.stringify(store.getState()));
+        ctx.response.body = shtml.replace(
+          "{{root}}",
+          renderToString(
+            <Provider store={store}>
+              <StaticRouter context={context} location={ctx.request.url}>
+                {routes.map((route) => (
+                  <Route {...route} />
+                ))}
+              </StaticRouter>
+            </Provider>
+          )
+        );
+      });
     })
     .routes()
 );

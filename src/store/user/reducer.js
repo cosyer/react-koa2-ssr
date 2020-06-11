@@ -11,7 +11,6 @@ export default (state = initState, action) => {
     case Types.SET_INCREMENT_AGE:
       return { ...state, age: state.age + 1 };
     case Types.GET_QUOTATIONS:
-      console.log(action);
       return { ...state, quotations: action.payload };
     default:
       return { ...state };

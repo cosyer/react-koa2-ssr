@@ -14,7 +14,6 @@ export const getQuotations = () => {
         "https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=28&encode=json"
       )
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
           dispatch({
             type: Types.GET_QUOTATIONS,
