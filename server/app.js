@@ -6,8 +6,11 @@ import fs from "fs";
 import koaStatic from "koa-static";
 import path from "path";
 import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
+import { StaticRouter, Route } from "react-router-dom";
 import routes from "../src/routes";
+
+import { Provider } from "react-redux";
+import { getServerStore } from "../src/store/index";
 
 // 配置文件
 const config = {
@@ -52,9 +55,13 @@ app.use(
       ctx.response.body = shtml.replace(
         "{{root}}",
         renderToString(
-          <StaticRouter context={context} location={ctx.request.url}>
-            {routes}
-          </StaticRouter>
+          <Provider store={getServerStore()}>
+            <StaticRouter context={context} location={ctx.request.url}>
+              {routes.map((route) => (
+                <Route {...route} />
+              ))}
+            </StaticRouter>
+          </Provider>
         )
       );
     })
