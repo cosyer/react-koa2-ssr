@@ -5,11 +5,18 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 
 class App extends Component {
+  state = {
+    number: 0,
+  };
+
   componentDidMount() {
     console.log("哈哈哈~ 服务器渲染成功了！");
   }
 
+  handleClick() {}
+
   render() {
+    let { number } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -25,6 +32,8 @@ class App extends Component {
           >
             Learn React
           </a>
+          <p>number: {number}</p>
+          <button onClick={this.handleClick}>click</button>
         </header>
       </div>
     );
