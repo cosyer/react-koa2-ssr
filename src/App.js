@@ -1,5 +1,5 @@
 import "./App.css";
-import { Button } from "antd";
+import { Button, Tag } from "antd";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as UserActions from "./store/user/createActions";
@@ -13,6 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     console.log("哈哈哈~ 服务器渲染成功了！");
+    this.props.propGetQuotations();
   }
 
   handleClick = () => {
@@ -32,6 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <Tag color="magenta">{user.quotations.hitokoto || "--"}</Tag>
           <img src={logo} className="App-logo" alt="logo" />
           <a
             className="App-link"
@@ -64,6 +66,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   propIncrementAge() {
     dispatch(UserActions.incrementAge());
+  },
+  propGetQuotations() {
+    dispatch(UserActions.getQuotations());
   },
 });
 

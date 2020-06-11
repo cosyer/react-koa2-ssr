@@ -7,16 +7,20 @@ export const incrementAge = () => {
   };
 };
 
-export const getSchoolList = () => {
+export const getQuotations = () => {
   return (dispatch) => {
-    return axios.get("http://localhost:8758/api/getSchoolList").then((res) => {
-      if (res.status === 200) {
-        console.log(res.data);
-        dispatch({
-          type: Types.GET_SCHOOL_LIST,
-          payload: [],
-        });
-      }
-    });
+    return axios
+      .get(
+        "https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=28&encode=json"
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          dispatch({
+            type: Types.GET_QUOTATIONS,
+            payload: res.data,
+          });
+        }
+      });
   };
 };

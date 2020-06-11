@@ -3,16 +3,16 @@ import * as Types from "./actionTypes";
 const initState = {
   name: "cosyer",
   age: 25,
-  schoolList: [],
+  quotations: {},
 };
 
 export default (state = initState, action) => {
   switch (action.type) {
     case Types.SET_INCREMENT_AGE:
       return { ...state, age: state.age + 1 };
-    case Types.GET_SCHOOL_LIST:
+    case Types.GET_QUOTATIONS:
       console.log(action);
-      return { ...state, schoolList: action.payload };
+      return { ...state, quotations: action.payload };
     default:
       return { ...state };
   }

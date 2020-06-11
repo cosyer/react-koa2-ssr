@@ -1,3 +1,3 @@
 export const SET_INCREMENT_AGE = "SET_INCREMENT_AGE";
 
-export const GET_SCHOOL_LIST = "GET_SCHOOL_LIST";
+export const GET_QUOTATIONS = "GET_QUOTATIONS";
