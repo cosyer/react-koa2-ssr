@@ -13,7 +13,12 @@ class App extends Component {
     console.log("哈哈哈~ 服务器渲染成功了！");
   }
 
-  handleClick() {}
+  handleClick = () => {
+    this.setState({
+      number: this.state.number + 1,
+    });
+    console.log(this.state.number);
+  };
 
   render() {
     let { number } = this.state;

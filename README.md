@@ -72,7 +72,7 @@ React SSR（react服务器渲染）正好解决了这2个问题。
 > react提供的SSR方法有两个renderToString 和 renderToStaticMarkup，区别如下：
 
 - renderToString 方法渲染的时候带有 data-reactid 属性. 在浏览器访问页面的时候，main.js能识别到HTML的内容，不会执行React.createElement二次创建DOM。
-- renderToStaticMarkup 则没有 data-reactid 属性，页面看上去干净点。在浏览器访问页面的时候，main.js不能识别到HTML内容，会执行main.js里面的React.createElement方法重新创建DOM。
+- renderToStaticMarkup 则没有 data-reactid 属性，页面看上去干净点。在浏览器访问页面的时候，main.js不能识别到HTML内容，会执行main.js里面的React.createElement方法重新创建DOM。适用于纯静态页面。
 
 ## 实现流程
 
