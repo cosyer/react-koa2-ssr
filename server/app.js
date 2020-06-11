@@ -47,7 +47,6 @@ app.use(
           }
         );
       });
-      console.log(111, ctx.request.url);
       // 替换掉 {{root}} 为我们生成后的HTML
       // ctx.response.body = shtml.replace("{{root}}", renderToString(<App />));
       ctx.response.body = shtml.replace(
