@@ -3,16 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
 
 import { Provider } from "react-redux";
 import { getClientStore } from "./store/index";
-import App from "./App";
+import routes from "./routes";
 
 ReactDOM.render(
   <Provider store={getClientStore()}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

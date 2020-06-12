@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./component/home";
 import News from "./component/news";
 import School from "./component/school";
+import App from "./App.js";
 
 // export default (
 //   <React.Fragment>
@@ -11,49 +12,55 @@ import School from "./component/school";
 //   </React.Fragment>
 // );
 
-// 数组对象形式
-export default [
-  {
-    path: "/",
-    component: Home,
-    exact: true,
-    loadData: Home.loadData,
-    key: "Home",
-  },
-  {
-    path: "/news",
-    component: News,
-    exact: true,
-    key: "News",
-  },
-  {
-    path: "/school",
-    component: School,
-    exact: true,
-    key: "School",
-  },
-];
-
-// 多级路由
+// 数组对象形式 同级路由
 // export default [
 //   {
 //     path: "/",
-//     component: App,
-//     key: "app",
-//     routes: [
-//       {
-//         path: "/",
-//         component: Home,
-//         loadData: Home.loadData,
-//         exact: true,
-//         key: "/",
-//       },
-//       {
-//         path: "/news",
-//         component: News,
-//         exact: true,
-//         key: "/news",
-//       },
-//     ],
+//     component: Home,
+//     exact: true,
+//     loadData: Home.loadData,
+//     key: "Home",
+//   },
+//   {
+//     path: "/news",
+//     component: News,
+//     exact: true,
+//     key: "News",
+//   },
+//   {
+//     path: "/school",
+//     component: School,
+//     exact: true,
+//     key: "School",
 //   },
 // ];
+
+// 多级路由
+export default [
+  {
+    path: "/",
+    component: App,
+    key: "app",
+    routes: [
+      {
+        path: "/",
+        component: Home,
+        exact: true,
+        key: "Home",
+      },
+      {
+        path: "/news",
+        component: News,
+        exact: true,
+        key: "News",
+      },
+      {
+        path: "/school",
+        component: School,
+        loadData: School.loadData,
+        exact: true,
+        key: "School",
+      },
+    ],
+  },
+];

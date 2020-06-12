@@ -7,6 +7,7 @@ import koaStatic from "koa-static";
 import path from "path";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, Route } from "react-router-dom";
+import { matchRoutes, renderRoutes } from "react-router-config";
 import routes from "../src/routes";
 
 import { Provider } from "react-redux";
@@ -57,13 +58,15 @@ app.use(
       });
       // 替换掉 {{root}} 为我们生成后的HTML
       // ctx.response.body = shtml.replace("{{root}}", renderToString(<App />));
+      // 匹配多级路由
 
+      let matchedRoutes = matchRoutes(routes, ctx.request.url);
       let promises = [];
       let store = getServerStore();
-      routes.forEach((route) => {
-        if (route.loadData) {
+      matchedRoutes.forEach((item) => {
+        if (item.route.loadData) {
           // 部署在服务端只能请求本机端口 无法转发请求其他网址?!
-          promises.push(route.loadData(store));
+          promises.push(item.route.loadData(store));
         }
       });
       await Promise.all(promises);
@@ -76,9 +79,10 @@ app.use(
           renderToString(
             <Provider store={store}>
               <StaticRouter context={context} location={ctx.request.url}>
-                {routes.map((route) => (
+                {/* {routes.map((route) => (
                   <Route {...route} />
-                ))}
+                ))} */}
+                {renderRoutes(routes)}
               </StaticRouter>
             </Provider>
           )

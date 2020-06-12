@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Table } from "antd";
+import * as UserActions from "../../store/user/createActions";
 
 const columns = [
   {
@@ -26,7 +27,7 @@ class School extends Component {
     });
     return (
       <React.Fragment>
-        <Table dataSource={dataSource} columns={columns} />;
+        <Table dataSource={dataSource} columns={columns} />
       </React.Fragment>
     );
   }
@@ -35,5 +36,8 @@ class School extends Component {
 const mapStateToProps = (state) => ({
   user: state.user,
 });
+
+// 给类添加静态方法
+School.loadData = (store) => store.dispatch(UserActions.getSchoolList());
 
 export default connect(mapStateToProps)(School);

@@ -72,7 +72,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// 给类添加静态方法
-Home.loadData = (store) => store.dispatch(UserActions.getSchoolList());
-
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Layout, Menu, Breadcrumb } from "antd";
-import { Link, Route, withRouter } from "react-router-dom";
-import routes from "./routes";
+import { Link, withRouter } from "react-router-dom";
+import { renderRoutes } from "react-router-config";
+
 const { Header, Content, Footer } = Layout;
 
 class App extends Component {
@@ -31,7 +32,9 @@ class App extends Component {
   render() {
     // 当前路由
     const currentRoute =
-      routes.find((i) => i.path === this.props.location.pathname) || {};
+      this.props.route.routes.find(
+        (i) => i.path === this.props.location.pathname
+      ) || {};
     return (
       <Layout className="layout" id="components-layout-demo-top">
         <Header>
@@ -39,7 +42,7 @@ class App extends Component {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={[currentRoute.key || "Home"]}
+            defaultSelectedKeys={[currentRoute.key]}
           >
             <Menu.Item key="Home">
               <Link to="/">首页</Link>
@@ -57,9 +60,7 @@ class App extends Component {
             <Breadcrumb.Item>{currentRoute.key}</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-content">
-            {routes.map((route) => (
-              <Route {...route} />
-            ))}
+            {renderRoutes(this.props.route.routes)}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
