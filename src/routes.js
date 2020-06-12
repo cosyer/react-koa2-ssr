@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import App from "./App";
+import Home from "./component/home";
 import News from "./component/news";
 import School from "./component/school";
 
@@ -15,21 +15,45 @@ import School from "./component/school";
 export default [
   {
     path: "/",
-    component: App,
+    component: Home,
     exact: true,
-    loadData: App.loadData,
-    key: "/",
+    loadData: Home.loadData,
+    key: "Home",
   },
   {
     path: "/news",
     component: News,
     exact: true,
-    key: "/news",
+    key: "News",
   },
   {
     path: "/school",
     component: School,
     exact: true,
-    key: "/school",
+    key: "School",
   },
 ];
+
+// 多级路由
+// export default [
+//   {
+//     path: "/",
+//     component: App,
+//     key: "app",
+//     routes: [
+//       {
+//         path: "/",
+//         component: Home,
+//         loadData: Home.loadData,
+//         exact: true,
+//         key: "/",
+//       },
+//       {
+//         path: "/news",
+//         component: News,
+//         exact: true,
+//         key: "/news",
+//       },
+//     ],
+//   },
+// ];

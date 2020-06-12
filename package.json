@@ -1,6 +1,6 @@
 {
   "name": "react-koa2-ssr",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "dependencies": {
     "antd": "^3.13.6",
@@ -20,6 +20,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^7.2.0",
+    "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.5",
     "redux": "^4.0.5",
