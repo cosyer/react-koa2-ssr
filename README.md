@@ -6,7 +6,9 @@
 
 2. **npm run build** 打包项目
 
-3. **npm run server** 启动服务器，访问地址 *http://localhost:3030* 访问项目
+3. **npm run api** 启动接口
+
+4. **npm run server** 启动服务器，访问地址 *http://localhost:3030* 访问项目
 
 # 前言
 

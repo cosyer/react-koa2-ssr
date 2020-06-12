@@ -3,9 +3,9 @@ import React, { Component } from "react";
 class News extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>News Page</h1>
-      </div>
+      </React.Fragment>
     );
   }
 }

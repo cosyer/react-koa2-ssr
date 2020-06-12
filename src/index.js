@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -11,20 +11,30 @@ import { getClientStore } from "./store/index";
 
 const { Header, Content, Footer } = Layout;
 
+// 当前默认选中的菜单项
+const defaultSelectedKeys =
+  routes.findIndex((i) => i.path === window.location.pathname) || 0;
+
 ReactDOM.render(
   <Provider store={getClientStore()}>
     <BrowserRouter>
       <Layout className="layout" id="components-layout-demo-top">
         <Header>
           <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={[defaultSelectedKeys + ""]}
+          >
+            <Menu.Item key="0">
               <Link to="/">首页</Link>
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item key="1">
               <Link to="/news">新闻</Link>
             </Menu.Item>
-            <Menu.Item key="3">学校</Menu.Item>
+            <Menu.Item key="2">
+              <Link to="/school">学校</Link>
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>

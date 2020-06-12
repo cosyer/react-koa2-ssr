@@ -28,8 +28,8 @@ class App extends Component {
   };
 
   render() {
-    let { number } = this.state;
-    let { user } = this.props;
+    const { number } = this.state;
+    const { user } = this.props;
     return (
       <div className="App">
         <header className="App-header">

@@ -70,18 +70,27 @@ app.use(
       // koa2 写法https://github.com/koajs/koa/blob/master/docs/migration.md
       //   .then(() => {
       console.log(JSON.stringify(store.getState()));
-      ctx.response.body = shtml.replace(
-        "{{root}}",
-        renderToString(
-          <Provider store={store}>
-            <StaticRouter context={context} location={ctx.request.url}>
-              {routes.map((route) => (
-                <Route {...route} />
-              ))}
-            </StaticRouter>
-          </Provider>
+      ctx.response.body = shtml
+        .replace(
+          "{{root}}",
+          renderToString(
+            <Provider store={store}>
+              <StaticRouter context={context} location={ctx.request.url}>
+                {routes.map((route) => (
+                  <Route {...route} />
+                ))}
+              </StaticRouter>
+            </Provider>
+          )
         )
-      );
+        .replace(
+          "{{water}}",
+          `<script>
+      window.context = {
+        state: ${JSON.stringify(store.getState())}
+      }
+    </script>`
+        );
       // })
       // .catch((e) => {
       //   console.log(e);
