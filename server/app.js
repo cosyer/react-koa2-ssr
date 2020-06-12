@@ -62,24 +62,30 @@ app.use(
       let store = getServerStore();
       routes.forEach((route) => {
         if (route.loadData) {
+          // 部署在服务端只能请求本机端口 无法转发请求其他网址?!
           promises.push(route.loadData(store));
         }
       });
-      Promise.all(promises).then(() => {
-        console.log(JSON.stringify(store.getState()));
-        ctx.response.body = shtml.replace(
-          "{{root}}",
-          renderToString(
-            <Provider store={store}>
-              <StaticRouter context={context} location={ctx.request.url}>
-                {routes.map((route) => (
-                  <Route {...route} />
-                ))}
-              </StaticRouter>
-            </Provider>
-          )
-        );
-      });
+      await Promise.all(promises);
+      // koa2 写法https://github.com/koajs/koa/blob/master/docs/migration.md
+      //   .then(() => {
+      console.log(JSON.stringify(store.getState()));
+      ctx.response.body = shtml.replace(
+        "{{root}}",
+        renderToString(
+          <Provider store={store}>
+            <StaticRouter context={context} location={ctx.request.url}>
+              {routes.map((route) => (
+                <Route {...route} />
+              ))}
+            </StaticRouter>
+          </Provider>
+        )
+      );
+      // })
+      // .catch((e) => {
+      //   console.log(e);
+      // });
     })
     .routes()
 );

@@ -24,7 +24,7 @@ ReactDOM.render(
             <Menu.Item key="2">
               <Link to="/news">新闻</Link>
             </Menu.Item>
-            <Menu.Item key="3">xx</Menu.Item>
+            <Menu.Item key="3">学校</Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>

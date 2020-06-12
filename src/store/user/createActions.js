@@ -23,3 +23,17 @@ export const getQuotations = () => {
       });
   };
 };
+
+export const getSchoolList = () => {
+  return (dispatch) => {
+    return axios.get("http://localhost:3000/api/getSchoolList").then((res) => {
+      if (res.status === 200) {
+        let schoolList = res.data.schoolList;
+        dispatch({
+          type: Types.GET_SCHOOL_LIST,
+          payload: schoolList,
+        });
+      }
+    });
+  };
+};

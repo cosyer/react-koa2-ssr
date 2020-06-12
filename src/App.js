@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-
 // 给类添加静态方法
-App.loadData = (store) => store.dispatch(UserActions.getQuotations());
+App.loadData = (store) => store.dispatch(UserActions.getSchoolList());
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

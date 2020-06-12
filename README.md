@@ -67,6 +67,8 @@ React SSR（react服务器渲染）正好解决了这2个问题。
 
 ![图片描述][1]
 
+![图片描述][2]
+
 这个业务流程图比较清晰了，服务端只生成HTML代码，实际上前端会生成一份main.js提供给服务端的HTML使用。这就是react ssr的工作流程。有了这个图会更好的理解，如果这个业务没理解清楚，后面的估计很难理解。
 
 > react提供的SSR方法有两个renderToString 和 renderToStaticMarkup，区别如下：
@@ -255,11 +257,12 @@ module.exports = {
 好了，所有的代码就这些了，是不是很简单了？我们koa2读取的静态资源是 build目录下面的。先执行**npm run build**打包项目，再执行**node ./server** 启动服务端项目。看下
 http://localhost:3030 页面的HTML代码检查下：
 
-![图片描述][2]
+![图片描述][3]
 
 没有```{{root}}```了，服务器渲染成功！
 
 > 注: 这个项目只是用来学习 react 的服务端渲染，而非安利大家一定要使用服务端渲染，因为 react 和 vue 的服务端渲染和普通的服务端渲染有很多的不一样，所以可以学习一下，提高一下自己的水平。
 
 [1]: http://cdn.mydearest.cn/blog/images/react-ssr.png
-[2]: http://cdn.mydearest.cn/blog/images/react-ssr-demo.png
+[2]: http://cdn.mydearest.cn/blog/images/react-ssr-demo2.png
+[3]: http://cdn.mydearest.cn/blog/images/react-ssr-demo.png
