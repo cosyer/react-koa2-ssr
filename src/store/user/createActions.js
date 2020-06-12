@@ -11,6 +11,7 @@ export const getQuotations = () => {
   return (dispatch) => {
     return axios
       .get(
+        // 也可以请求 http://localhost:3000/api/hitokoto 代理转发
         "https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=28&encode=json"
       )
       .then((res) => {
