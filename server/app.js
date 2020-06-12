@@ -64,9 +64,14 @@ app.use(
       let promises = [];
       let store = getServerStore();
       matchedRoutes.forEach((item) => {
-        if (item.route.loadData) {
+        let loadData = item.route.loadData;
+        if (loadData) {
           // 部署在服务端只能请求本机端口 无法转发请求其他网址?!
-          promises.push(item.route.loadData(store));
+          // 报错也执行resolve防止页面一直loading不渲染，失败状态改成成功
+          const promise = new Promise((resolve) => {
+            loadData(store).then(resolve).catch(resolve);
+          });
+          promises.push(promise);
         }
       });
       await Promise.all(promises);

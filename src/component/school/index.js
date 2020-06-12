@@ -17,6 +17,12 @@ const columns = [
 ];
 
 class School extends Component {
+  componentDidMount() {
+    // 服务端注水失败 客户端自己请求
+    if (this.props.user.schoolList.length === 0) {
+      this.props.propGetSchoolList();
+    }
+  }
   render() {
     const { user } = this.props;
     let dataSource = user.schoolList.map((i) => {
@@ -27,7 +33,7 @@ class School extends Component {
     });
     return (
       <React.Fragment>
-        <Table dataSource={dataSource} columns={columns} />
+        <Table dataSource={dataSource} columns={columns} rowKey="id" />
       </React.Fragment>
     );
   }
@@ -37,7 +43,13 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  propGetSchoolList() {
+    dispatch(UserActions.getSchoolList());
+  },
+});
+
 // 给类添加静态方法
 School.loadData = (store) => store.dispatch(UserActions.getSchoolList());
 
-export default connect(mapStateToProps)(School);
+export default connect(mapStateToProps, mapDispatchToProps)(School);
