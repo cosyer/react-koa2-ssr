@@ -100,6 +100,10 @@ app.use(
       }
     </script>`
         );
+      // 重定向
+      // if (context.action === "REPLACE") {
+      //   ctx.response.redirect(301, context.url);
+      // }
       // 判断404
       if (context.NotFound) {
         ctx.response.status = 404;

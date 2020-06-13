@@ -9,7 +9,6 @@ export const incrementAge = () => {
 
 export const getQuotations = () => {
   return (dispatch, getState, axiosInstance) => {
-    console.log(888, axiosInstance);
     return axiosInstance
       .get(
         // 也可以请求 http://localhost:3000/api/hitokoto 代理转发
