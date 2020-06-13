@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./component/home";
 import News from "./component/news";
 import School from "./component/school";
+import NotFound from "./component/404";
 import App from "./App.js";
 
 // export default (
@@ -60,6 +61,9 @@ export default [
         loadData: School.loadData,
         exact: true,
         key: "School",
+      },
+      {
+        component: NotFound,
       },
     ],
   },

@@ -100,6 +100,10 @@ app.use(
       }
     </script>`
         );
+      // 判断404
+      if (context.NotFound) {
+        ctx.response.status = 404;
+      }
       // })
       // .catch((e) => {
       //   console.log(e);
