@@ -8,8 +8,9 @@ export const incrementAge = () => {
 };
 
 export const getQuotations = () => {
-  return (dispatch) => {
-    return axios
+  return (dispatch, getState, axiosInstance) => {
+    console.log(888, axiosInstance);
+    return axiosInstance
       .get(
         // 也可以请求 http://localhost:3000/api/hitokoto 代理转发
         "https://api.imjad.cn/hitokoto/?cat=&charset=utf-8&length=28&encode=json"
@@ -26,8 +27,8 @@ export const getQuotations = () => {
 };
 
 export const getSchoolList = () => {
-  return (dispatch) => {
-    return axios.get("http://localhost:3000/api/getSchoolList").then((res) => {
+  return (dispatch, getState, axiosInstance) => {
+    return axiosInstance.get("/api/getSchoolList").then((res) => {
       if (res.status === 200) {
         let schoolList = res.data.schoolList;
         dispatch({
