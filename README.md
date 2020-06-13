@@ -265,6 +265,9 @@ http://localhost:3030 页面的HTML代码检查下：
 
 > 注: 这个项目只是用来学习 react 的服务端渲染，而非安利大家一定要使用服务端渲染，因为 react 和 vue 的服务端渲染和普通的服务端渲染有很多的不一样，所以可以学习一下，提高一下自己的水平。
 
+## 参考
+[非常详细的实现 react 服务端渲染](https://github.com/dawnight/react-ssr-docs)
+
 [1]: http://cdn.mydearest.cn/blog/images/react-ssr.png
 [2]: http://cdn.mydearest.cn/blog/images/react-ssr-demo2.png
 [3]: http://cdn.mydearest.cn/blog/images/react-ssr-demo.png
