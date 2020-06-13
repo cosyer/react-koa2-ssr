@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 import { Table } from "antd";
 import * as UserActions from "../../store/user/createActions";
 
@@ -33,6 +34,10 @@ class School extends Component {
     });
     return (
       <React.Fragment>
+        <Helmet>
+          <title>hello, School</title>
+          <meta name="描述" content="这是 School 页面" />
+        </Helmet>
         <Table dataSource={dataSource} columns={columns} rowKey="id" />
       </React.Fragment>
     );

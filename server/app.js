@@ -8,6 +8,8 @@ import path from "path";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, Route } from "react-router-dom";
 import { matchRoutes, renderRoutes } from "react-router-config";
+import { Helmet } from "react-helmet";
+
 import routes from "../src/routes";
 
 import { Provider } from "react-redux";
@@ -78,6 +80,7 @@ app.use(
       // koa2 写法https://github.com/koajs/koa/blob/master/docs/migration.md
       //   .then(() => {
       console.log(JSON.stringify(store.getState()));
+      const helmet = Helmet.renderStatic();
       ctx.response.body = shtml
         .replace(
           "{{root}}",
@@ -99,7 +102,10 @@ app.use(
         state: ${JSON.stringify(store.getState())}
       }
     </script>`
-        );
+        )
+        .replace("{{title}}", helmet.title.toString())
+        .replace("{{meta}}", helmet.meta.toString());
+
       // 重定向
       // if (context.action === "REPLACE") {
       //   ctx.response.redirect(301, context.url);

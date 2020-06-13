@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 
 class NotFound extends Component {
   UNSAFE_componentWillMount() {
@@ -7,7 +8,15 @@ class NotFound extends Component {
   }
 
   render() {
-    return <div>404 NotFound</div>;
+    return (
+      <div>
+        <Helmet>
+          <title>hello, 404</title>
+          <meta name="描述" content="这是 404 页面" />
+        </Helmet>
+        404 NotFound
+      </div>
+    );
   }
 }
 

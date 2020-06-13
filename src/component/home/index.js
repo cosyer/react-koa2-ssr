@@ -1,6 +1,7 @@
 import "./index.css";
 import { Button, Tag } from "antd";
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import * as UserActions from "../../store/user/createActions";
 
@@ -32,6 +33,10 @@ class Home extends Component {
     const { user } = this.props;
     return (
       <div className="home">
+        <Helmet>
+          <title>hello, Home</title>
+          <meta name="描述" content="这是 Home 页面" />
+        </Helmet>
         <header className="home-header">
           <Tag color="magenta">{user.quotations.hitokoto || "--"}</Tag>
           <img src={logo} className="home-logo" alt="logo" />
