@@ -290,4 +290,4 @@ http://localhost:3030 页面的HTML代码检查下：
 
 [1]: http://cdn.mydearest.cn/blog/images/react-ssr.png
 [2]: http://cdn.mydearest.cn/blog/images/react-ssr-demo2.png
-[3]: http://cdn.mydearest.cn/blog/images/react-ssr-demo.png
+[3]: http://cdn.mydearest.cn/blog/images/react-ssr-demo-lastest.png
