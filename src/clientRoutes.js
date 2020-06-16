@@ -5,21 +5,23 @@ import Home from "./component/home";
 // import School from "./component/school";
 // import NotFound from "./component/404";
 import App from "./App.js";
+// loading效果
 import Loading from "./component/loading";
+// 骨架屏
+import SkeletonView from "./component/skeletonView";
 
 // 延迟加载回调
 const SuspenseComponent = (Component) => (props) => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={Math.random() >= 0.5 ? <Loading /> : <SkeletonView />}>
       <Component {...props}></Component>
     </Suspense>
   );
 };
 
 // 组件懒加载 服务端还是用react-loadable
-const News = lazy(() => import("./component/news"));
-// const School = lazy(() => import("./component/school"));
-const School = lazy(
+// const News = lazy(() => import("./component/news"));
+const News = lazy(
   () =>
     new Promise((resolve) =>
       setTimeout(
@@ -29,14 +31,15 @@ const School = lazy(
             {
               // 模拟export default
               default: function render() {
-                return <div>School</div>;
+                return <div>News</div>;
               },
             }
           ),
-        3000
+        1000
       )
     )
 );
+const School = lazy(() => import("./component/school"));
 const NotFound = lazy(() => import("./component/404"));
 
 // 多级路由
@@ -66,7 +69,7 @@ export default [
         key: "School",
       },
       {
-        component: SuspenseComponent(NotFound),
+        component: NotFound,
       },
     ],
   },
