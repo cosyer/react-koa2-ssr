@@ -253,7 +253,27 @@ module.exports = {
     return config;
   }
 };
+```
 
+服务器端能够识别 css 资源需要依赖`isomorphic-style-loader`
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css?$/,
+        use: ['isomorphic-style-loader', {
+          loader: "css-loader",
+          options: {
+            importLoaders: 1,
+            modules: true,
+            localIdentName: '[name]_[local]_[hash:base64:5]'
+          }
+        }]
+      }
+    ]
+  }
+}
 ```
 
 好了，所有的代码就这些了，是不是很简单了？我们koa2读取的静态资源是 build目录下面的。先执行**npm run build**打包项目，再执行**node ./server** 启动服务端项目。看下
