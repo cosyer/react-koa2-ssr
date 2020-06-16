@@ -7,7 +7,7 @@ import { renderRoutes } from "react-router-config";
 
 import { Provider } from "react-redux";
 import { getClientStore } from "./store/index";
-import routes from "./routes";
+import routes from "./clientRoutes";
 
 ReactDOM.render(
   <Provider store={getClientStore()}>
