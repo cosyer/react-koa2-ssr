@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./component/home";
 import News from "./component/news";
 import School from "./component/school";
+import Doc from "./component/doc";
 import NotFound from "./component/404";
 import App from "./App.js";
 
@@ -61,6 +62,12 @@ export default [
         loadData: School.loadData,
         exact: true,
         key: "School",
+      },
+      {
+        path: "/doc",
+        component: Doc,
+        exact: true,
+        key: "Doc",
       },
       {
         component: NotFound,

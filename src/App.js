@@ -53,6 +53,9 @@ class App extends Component {
             <Menu.Item key="School">
               <Link to="/school">学校</Link>
             </Menu.Item>
+            <Menu.Item key="Doc">
+              <Link to="/doc">开发文档</Link>
+            </Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: "0 50px" }}>

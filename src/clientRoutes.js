@@ -40,6 +40,7 @@ const News = lazy(
     )
 );
 const School = lazy(() => import("./component/school"));
+const Doc = lazy(() => import("./component/doc"));
 const NotFound = lazy(() => import("./component/404"));
 
 // 多级路由
@@ -67,6 +68,12 @@ export default [
         loadData: School.loadData,
         exact: true,
         key: "School",
+      },
+      {
+        path: "/doc",
+        component: SuspenseComponent(Doc),
+        exact: true,
+        key: "Doc",
       },
       {
         component: NotFound,
