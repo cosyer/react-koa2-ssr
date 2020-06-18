@@ -2,6 +2,7 @@ import "./index.css";
 import { Button, Tag } from "antd";
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../store/user/createActions";
 
@@ -14,7 +15,7 @@ class Home extends Component {
 
   componentDidMount() {
     console.log("哈哈哈~ 服务器渲染成功了！");
-    this.props.propGetQuotations();
+    this.props.getQuotations();
   }
 
   handleClick = () => {
@@ -25,7 +26,7 @@ class Home extends Component {
   };
 
   handleIncreaseAge = () => {
-    this.props.propIncrementAge();
+    this.props.incrementAge();
   };
 
   render() {
@@ -68,13 +69,18 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
+// const mapDispatchToProps = (dispatch) => ({
+//   incrementAge() {
+//     dispatch(UserActions.incrementAge());
+//   },
+//   getQuotations() {
+//     dispatch(UserActions.getQuotations());
+//   },
+// });
+
+// const mapDispatchToProps = (dispatch) => (bindActionCreators(UserActions, dispatch))
 const mapDispatchToProps = (dispatch) => ({
-  propIncrementAge() {
-    dispatch(UserActions.incrementAge());
-  },
-  propGetQuotations() {
-    dispatch(UserActions.getQuotations());
-  },
+  ...bindActionCreators(UserActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
