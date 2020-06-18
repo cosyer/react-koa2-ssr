@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import * as UserActions from "../../store/user/createActions";
 
 import CountUp from "react-countup";
+import { CSSTransition } from "react-transition-group";
 import logo from "../../logo.svg";
 
 class Home extends Component {
@@ -42,14 +43,23 @@ class Home extends Component {
         <header className="home-header">
           <Tag color="magenta">{user.quotations.hitokoto || "--"}</Tag>
           <img src={logo} className="home-logo" alt="logo" />
-          <a
-            className="home-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+          <CSSTransition
+            in={true}
+            classNames={"fade"}
+            appear={true}
+            key={1}
+            timeout={1000}
+            unmountOnExit={true}
           >
-            Learn React
-          </a>
+            <a
+              className="home-link"
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn React SSR
+            </a>
+          </CSSTransition>
           <p>number: {number}</p>
           <Button type="primary" onClick={this.handleClick}>
             click
