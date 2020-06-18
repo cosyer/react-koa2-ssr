@@ -2,7 +2,7 @@ import * as Types from "./actionTypes";
 
 const initState = {
   name: "cosyer",
-  age: 25,
+  age: new Date().getFullYear() - 1995,
   quotations: {},
   schoolList: [],
 };

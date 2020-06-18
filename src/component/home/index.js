@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as UserActions from "../../store/user/createActions";
 
+import CountUp from "react-countup";
 import logo from "../../logo.svg";
 
 class Home extends Component {
@@ -54,7 +55,7 @@ class Home extends Component {
             click
           </Button>
           <p>
-            {user.name}:{user.age}
+            {user.name}: <CountUp start={0} end={user.age} />
           </p>
           <Button type="primary" onClick={this.handleIncreaseAge}>
             increase age
