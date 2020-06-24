@@ -31,6 +31,8 @@ app.use(async (ctx, next) => {
   await next();
 });
 
+// express.Router().route("/add").post(function (req, res) {})
+// express.Router().get('/', function (req, res) {})
 app.use(
   new Router()
     .get("/api/getSchoolList", async (ctx, next) => {
