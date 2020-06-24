@@ -1,9 +1,11 @@
 import "./index.css";
-import { Button, Tag } from "antd";
+import { Button, Tag, Tooltip } from "antd";
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { push } from "connected-react-router";
+
 import * as UserActions from "../../store/user/createActions";
 
 import CountUp from "react-countup";
@@ -70,6 +72,15 @@ class Home extends Component {
           <Button type="primary" onClick={this.handleIncreaseAge}>
             increase age
           </Button>
+          <Tooltip title="search">
+            <Button
+              style={{ marginTop: "10px" }}
+              type="primary"
+              shape="circle"
+              icon="search"
+              onClick={this.props.go2School}
+            />
+          </Tooltip>
         </header>
       </div>
     );
@@ -92,6 +103,9 @@ const mapStateToProps = (state) => ({
 // const mapDispatchToProps = (dispatch) => (bindActionCreators(UserActions, dispatch))
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators(UserActions, dispatch),
+  go2School() {
+    dispatch(push("/school"));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

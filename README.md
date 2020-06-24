@@ -291,3 +291,7 @@ http://localhost:3030 页面的HTML代码检查下：
 [1]: http://cdn.mydearest.cn/blog/images/react-ssr.png
 [2]: http://cdn.mydearest.cn/blog/images/react-ssr-demo2.png
 [3]: http://cdn.mydearest.cn/blog/images/react-ssr-demo-lastest.png
+
+## 目前存在问题
+- 集成`connected-react-router`和`history`
+用redux的方式去操作管理react-router，dispatch的方式使用router，url高边了，但路由没跳转。路由跳转没有触发redux log。

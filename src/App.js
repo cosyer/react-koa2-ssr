@@ -8,6 +8,7 @@ const { Header, Content, Footer } = Layout;
 class App extends Component {
   constructor(props) {
     super(props);
+    // props.history.push()
     props.history.listen((location) => {
       // 在这里监听location对象
       console.log(location.pathname);

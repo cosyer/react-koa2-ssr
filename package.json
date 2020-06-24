@@ -6,6 +6,8 @@
     "antd": "^3.13.6",
     "asset-require-hook": "^1.2.0",
     "axios": "^0.19.2",
+    "connected-react-router": "^6.8.0",
+    "history": "^5.0.0",
     "http-proxy-middleware": "^1.0.4",
     "koa": "^2.7.0",
     "koa-body": "^4.0.8",
