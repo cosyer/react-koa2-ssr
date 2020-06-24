@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import Home from "./component/home";
 // import News from "./component/news";
 // import School from "./component/school";
-// import NotFound from "./component/404";
+import NotFound from "./component/404";
 import App from "./App.js";
 // loading效果
 import Loading from "./component/loading";
@@ -41,7 +41,6 @@ const News = lazy(
 );
 const School = lazy(() => import("./component/school"));
 const Doc = lazy(() => import("./component/doc"));
-const NotFound = lazy(() => import("./component/404"));
 
 // 多级路由
 export default [
